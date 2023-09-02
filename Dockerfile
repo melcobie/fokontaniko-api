@@ -5,10 +5,10 @@ FROM node:14
 WORKDIR /app
 
 # Install Oracle Instant Client (download from Oracle website and place in the same directory as this Dockerfile)
-COPY instantclient-basiclite-linux.x64-19.11.0.0.0dbru.zip . 
-RUN unzip instantclient-basiclite-linux.x64-19.11.0.0.0dbru.zip && \
-    rm instantclient-basiclite-linux.x64-19.11.0.0.0dbru.zip && \
-    mv instantclient_19_11 /opt/oracle
+COPY instantclient-basic-linux.x64-19.19.0.0.0dbru.el9.zip . 
+RUN unzip instantclient-basic-linux.x64-19.19.0.0.0dbru.el9.zip && \
+    rm instantclient-basic-linux.x64-19.19.0.0.0dbru.el9.zip && \
+    mv instantclient_19_19 /opt/oracle
 
 # Set environment variables for Oracle Client
 ENV LD_LIBRARY_PATH=/opt/oracle
