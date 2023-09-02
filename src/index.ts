@@ -48,7 +48,7 @@ async function run() {
     connection = await connect.connect();
     console.log("Connecté")
   }catch(err){
-    throw err;
+    console.log(err);
   }finally{
     if(connection)
       await connection.close();
@@ -57,11 +57,11 @@ async function run() {
 run();
   
 
-// AppDataSource.initialize()
-//     .then(() => {
-//       console.log("Connexion à Oracle réussie");
-//     })
-//     .catch((error) => console.log(error))
+AppDataSource.initialize()
+    .then(() => {
+      console.log("Connexion à Oracle réussie");
+    })
+    .catch((error) => console.log(error))
 
 // Pour les formulaires
 app.use(bodyParser.urlencoded({extended: true}));

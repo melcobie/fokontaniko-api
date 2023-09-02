@@ -16,7 +16,7 @@ export const host = "62.72.36.236";
 export const dbconfig = {
     user: "FOKONTANIKO",
     password: "Sombi123!",
-    connectionString: `${host}/${dbname}`
+    connectionString: `${host}/${dbname}`,
 };
 
 export const AppDataSource = new DataSource({
@@ -34,6 +34,6 @@ export const AppDataSource = new DataSource({
     entities: ["src/entity/*.ts"],
     subscribers: [],
     migrations: [],
-    
+
 });
 
