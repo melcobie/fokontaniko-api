@@ -11,6 +11,7 @@ import historiqueRoutes from "./routes/historique-routes";
 import citoyenRoutes from "./routes/citoyen-routes";
 import mongoose from "mongoose";
 import actualiteRoutes from "./routes/actualite-routes";
+import oracledb = require("oracledb");
 
 let app = express();
 
@@ -37,6 +38,17 @@ mongoose.connect(uri, options)
     err => {
       console.log('Erreur de connexion: ', err);
     });
+
+  let clientOpts = {};
+  // if (process.platform === 'win32') {                                   // Windows
+  //     clientOpts = { libDir: 'C:\\oracle\\instantclient_19_18' };
+  // } else if (process.platform === 'darwin' && process.arch === 'x64') { // macOS Intel
+  //     clientOpts = { libDir: process.env.HOME + '/Downloads/instantclient_19_8' };
+  // } // else on other platforms the system library search path
+  //   // must always be set before Node.js is started.
+  clientOpts = { libDir: '/instantclient_19_19'};
+  // enable Thick mode which is needed for SODA
+  oracledb.initOracleClient(clientOpts);
 
 AppDataSource.initialize()
     .then(() => {
