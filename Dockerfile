@@ -19,7 +19,9 @@ ENV OCI_INC_DIR=/opt/oracle/sdk/include
 COPY package*.json ./
 
 # Install application dependencies
+RUN npm install -g ts-node
 RUN npm install
+RUN npm install typescript
 
 # Copy the rest of your application code into the container
 COPY . .
