@@ -7,8 +7,8 @@ WORKDIR /app
 # Install Oracle Instant Client (download from Oracle website and place in the same directory as this Dockerfile)
 COPY instantclient-basic-linux.x64-19.19.0.0.0dbru.el9.zip . 
 RUN unzip instantclient-basic-linux.x64-19.19.0.0.0dbru.el9.zip
-RUN rm instantclient-basic-linux.x64-19.19.0.0.0dbru.el9.zip && \
-    mv instantclient_19_19 /opt/oracle
+RUN rm instantclient-basic-linux.x64-19.19.0.0.0dbru.el9.zip
+RUN mv instantclient_19_19 /opt/oracle
 
 # Set environment variables for Oracle Client
 ENV LD_LIBRARY_PATH=/opt/oracle
