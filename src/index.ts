@@ -46,7 +46,7 @@ mongoose.connect(uri, options)
   //     clientOpts = { libDir: process.env.HOME + '/Downloads/instantclient_19_8' };
   // } // else on other platforms the system library search path
   //   // must always be set before Node.js is started.
-  clientOpts = { libDir: '/instantclient_19_19'};
+  clientOpts = { libDir: '/opt/oracle/instantclient_19_19'};
   // enable Thick mode which is needed for SODA
   oracledb.initOracleClient(clientOpts);
 
