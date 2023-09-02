@@ -13,6 +13,7 @@ import mongoose from "mongoose";
 import actualiteRoutes from "./routes/actualite-routes";
 import oracledb = require("oracledb");
 import dotenv from "dotenv";
+import connect from "./utils/connect";
 
 let app = express();
 dotenv.config();
@@ -41,11 +42,26 @@ mongoose.connect(uri, options)
       console.log('Erreur de connexion: ', err);
     });
 
-AppDataSource.initialize()
-    .then(() => {
-      console.log("Connexion à Oracle réussie");
-    })
-    .catch((error) => console.log(error))
+async function run() {
+  let connection;
+  try{
+    connection = await connect.connect();
+    console.log("Connecté")
+  }catch(err){
+    throw err;
+  }finally{
+    if(connection)
+      await connection.close();
+  }
+
+run();
+  
+
+// AppDataSource.initialize()
+//     .then(() => {
+//       console.log("Connexion à Oracle réussie");
+//     })
+//     .catch((error) => console.log(error))
 
 // Pour les formulaires
 app.use(bodyParser.urlencoded({extended: true}));
