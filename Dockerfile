@@ -28,4 +28,4 @@ COPY . .
 EXPOSE 8010
 
 # Define the command to run your Node.js application
-CMD ["node", "app.js"]  # Replace "app.js" with the entry point of your application
+CMD ["ts-node", "src/index.ts"]
